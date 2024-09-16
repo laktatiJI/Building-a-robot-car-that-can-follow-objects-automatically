@@ -1,0 +1,49 @@
+// Déclaration des pins
+const int trigPin = 9;
+const int echoPin = 10;
+const int motorPin1 = 3; // Premier moteur
+const int motorPin2 = 4; // Deuxième moteur
+long duration;
+int distance;
+void setup() {
+pinMode(trigPin, OUTPUT);
+pinMode(echoPin, INPUT);
+pinMode(motorPin1, OUTPUT);
+pinMode(motorPin2, OUTPUT);
+Serial.begin(9600); // Pour le moniteur série
+}
+void loop() {
+// Envoi d'un signal
+digitalWrite(trigPin, LOW);
+delayMicroseconds(2);
+digitalWrite(trigPin, HIGH);
+delayMicroseconds(10);
+digitalWrite(trigPin, LOW);
+// Lecture de la durée de l'echo
+duration = pulseIn(echoPin, HIGH);
+// Calcul de la distance
+distance = duration * 0.034 / 2;
+// Affichage de la distance
+Serial.print("Distance: ");
+Serial.println(distance);
+// Contrôle des moteurs en fonction de la distance
+if (distance < 5) {
+// Si la distance est inférieure à 5 cm, arrêter les moteurs
+Serial.println("Distance < 5 cm: Arrêt des moteurs");
+digitalWrite(motorPin1, LOW);
+digitalWrite(motorPin2, LOW);
+} 
+else if (distance >= 5 && distance < 10) {
+// Si la distance est comprise entre 5 et 10 cm, faire tourner les moteurs
+Serial.println("5 cm <= Distance < 10 cm: Les moteurs roulent");
+digitalWrite(motorPin1, HIGH);
+digitalWrite(motorPin2, HIGH);
+} 
+else if (distance >= 10) {
+// Si la distance est supérieure ou égale à 10 cm, arrêter les moteurs
+Serial.println("Distance >= 10 cm: Arrêt des moteurs");
+digitalWrite(motorPin1, LOW);
+digitalWrite(motorPin2, LOW);
+}
+delay(100); // Petite pause pour la stabilité
+}
