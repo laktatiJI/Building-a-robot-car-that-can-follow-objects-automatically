@@ -1,0 +1,35 @@
+Here is a textual representation of the wiring diagram for your Arduino robot car project:
+
+1) Arduino UNO: 
+
+    a. Pin 9 → Connected to the Trig of the ultrasonic sensor (HC-SR04). 
+
+    b. Pin 10 → Connected to the Echo of the ultrasonic sensor. 
+
+    c. Pins 3, 4, 5, 6 → Connected to the motor driver module (L298N) to control the two motors.
+
+2) Ultrasonic Sensor (HC-SR04):
+
+    a. VCC → 5V power from the Arduino. 
+    
+    b. GND → GND of the Arduino. 
+
+    c. Trig → Pin 9 of the Arduino. 
+
+    d. Echo → Pin 10 of the Arduino.
+
+3) Motor Driver Module (L298N): 
+
+    a. IN1, IN2, IN3, IN4 → Connected to pins 3, 4, 5, 6 of the Arduino to control the motors. 
+
+    b. VCC → Connected to an external power supply (battery). 
+
+    c. GND → Connected to the GND of the Arduino and the battery.
+
+4) Motors (2 motors for the wheels): Each motor is connected to the outputs of the motor driver module (L298N).
+
+5) Power Supply: 
+
+    a. The external battery powers the motor driver module. 
+
+    b. The Arduino can be powered by the battery or via USB.
